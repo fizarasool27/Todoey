@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94D811A52289C1950045F85F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94D811A32289C1950045F85F /* DataModel.xcdatamodeld */; };
+		947A0D842294685400087FF8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947A0D832294685400087FF8 /* Category.swift */; };
+		947A0D862294686500087FF8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947A0D852294686500087FF8 /* Item.swift */; };
 		94D811A7228E27920045F85F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D811A6228E27920045F85F /* CategoryViewController.swift */; };
 		94E11A0F2284D1DE0032A94E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E11A0E2284D1DE0032A94E /* AppDelegate.swift */; };
 		94E11A112284D1DE0032A94E /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E11A102284D1DE0032A94E /* ToDoListViewController.swift */; };
@@ -18,7 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		94D811A42289C1950045F85F /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		947A0D832294685400087FF8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		947A0D852294686500087FF8 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		94D811A6228E27920045F85F /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		94E11A0B2284D1DE0032A94E /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E11A0E2284D1DE0032A94E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +66,8 @@
 		944C4F67228731BE00B9FCD0 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				94D811A32289C1950045F85F /* DataModel.xcdatamodeld */,
+				947A0D832294685400087FF8 /* Category.swift */,
+				947A0D852294686500087FF8 /* Item.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -200,16 +203,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Todoey/Pods-Todoey-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -224,15 +223,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Todoey-checkManifestLockResult.txt",
 			);
@@ -249,8 +244,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				94D811A7228E27920045F85F /* CategoryViewController.swift in Sources */,
+				947A0D842294685400087FF8 /* Category.swift in Sources */,
 				94E11A112284D1DE0032A94E /* ToDoListViewController.swift in Sources */,
-				94D811A52289C1950045F85F /* DataModel.xcdatamodeld in Sources */,
+				947A0D862294686500087FF8 /* Item.swift in Sources */,
 				94E11A0F2284D1DE0032A94E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,19 +447,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		94D811A32289C1950045F85F /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				94D811A42289C1950045F85F /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 94D811A42289C1950045F85F /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 94E11A032284D1DE0032A94E /* Project object */;
 }
