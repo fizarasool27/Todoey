@@ -8,12 +8,15 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 
-class ToDoListViewController: UITableViewController {
+class ToDoListViewController: SwipeTableViewController {
     
     var todoItems : Results<Item>?
     let realm = try! Realm()
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var selectedCategory : Category? {
         didSet {
@@ -21,20 +24,44 @@ class ToDoListViewController: UITableViewController {
         }
     }
     
-    
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
-    
+
     //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
-//            todoItems = items
-//        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let navBar = navigationController?.navigationBar else { fatalError("Navigation Controller does not exist.")}
+        
+        guard let colorHex = selectedCategory?.catColor  else {fatalError()}
+            
+        title = selectedCategory?.name
+            
+        guard let navBarColor = UIColor(hexString: colorHex)  else {fatalError()}
+             
+            navBar.barTintColor = navBarColor
+        
+            navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+        
+            navBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
+        
+            searchBar.barTintColor = navBarColor
+        
+            }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        guard let originalColor = UIColor(hexString: "ID9BF6") else {fatalError()}
+        navigationController?.navigationBar.barTintColor = originalColor
+        navigationController?.navigationBar.tintColor = FlatWhite()
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : FlatWhite()]
+    }
+            
+    
     
     //MARK - TableView Datasource methods
     
@@ -46,13 +73,20 @@ class ToDoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         cell.textLabel?.text = todoItems?[indexPath.row].title
         
         if let item = todoItems?[indexPath.row] {
             
             cell.textLabel?.text = item.title
+            
+            if let color = UIColor(hexString: selectedCategory!.catColor)?.darken(byPercentage:CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
+                
+                cell.backgroundColor = color
+                cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+                
+                }
             
             //if item.done == true {
                 
@@ -67,10 +101,12 @@ class ToDoListViewController: UITableViewController {
             
             cell.accessoryType = item.done ? .checkmark : .none
             
-                
         } else {
+            
             cell.textLabel?.text = "No Items Added"
+            
         }
+        
     return cell
 }
     
@@ -143,51 +179,34 @@ class ToDoListViewController: UITableViewController {
 
     
 }
-    
-//    func saveItems() {
-//
-//        do {
-//          try context.save()
-//        }
-//        catch {
-//            print("Error saving context \(error)")
-//
-//        }
-//        tableView.reloadData()
-//
-//    }
-
 
     func loadItems() {
         
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
     
-//        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", (selectedCategory?.name)!)
-//
-//        if let additionalPredicate = predicate {
-//            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
-//        } else {
-//                request.predicate = categoryPredicate
-//            }
-////
-//        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, predicate])
-//
-//        request.predicate = compoundPredicate
-//
-//        do {
-//             todoItems = try context.fetch(request)
-//        }
-//        catch {
-//            print("Error fetching data from context: \(error)")
-//        }
         
             tableView.reloadData()
                                             //let request : NSFetchRequest<Item> = Item.fetchRequest()
     }
+   
+    //MARK : Deleting cells with swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+       
+        if let itemDeleted = todoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    realm.delete(itemDeleted)
+                }
+            } catch {
+                print("Error deleting item : \(error)")
+            }
+        }
+        
+    }
 
 }
-//
-//}
+
 
 //MARK : Search bar methods
 
