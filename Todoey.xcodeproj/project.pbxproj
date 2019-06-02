@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		940F79A322A2FA8300ACABD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 940F79A222A2FA8300ACABD1 /* Assets.xcassets */; };
 		947A0D842294685400087FF8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947A0D832294685400087FF8 /* Category.swift */; };
 		947A0D862294686500087FF8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947A0D852294686500087FF8 /* Item.swift */; };
 		94D811A7228E27920045F85F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D811A6228E27920045F85F /* CategoryViewController.swift */; };
@@ -14,12 +15,12 @@
 		94E11A0F2284D1DE0032A94E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E11A0E2284D1DE0032A94E /* AppDelegate.swift */; };
 		94E11A112284D1DE0032A94E /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E11A102284D1DE0032A94E /* ToDoListViewController.swift */; };
 		94E11A142284D1DE0032A94E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E11A122284D1DE0032A94E /* Main.storyboard */; };
-		94E11A162284D1DF0032A94E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94E11A152284D1DF0032A94E /* Assets.xcassets */; };
 		94E11A192284D1DF0032A94E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E11A172284D1DF0032A94E /* LaunchScreen.storyboard */; };
 		F0DE57D4157056B89B5D1AD8 /* Pods_Todoey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EAD015955946217A81A1F2 /* Pods_Todoey.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		940F79A222A2FA8300ACABD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		947A0D832294685400087FF8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		947A0D852294686500087FF8 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		94D811A6228E27920045F85F /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -28,7 +29,6 @@
 		94E11A0E2284D1DE0032A94E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94E11A102284D1DE0032A94E /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
 		94E11A132284D1DE0032A94E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		94E11A152284D1DF0032A94E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94E11A182284D1DF0032A94E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94E11A1A2284D1DF0032A94E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A034BC27F62489B229DC044E /* Pods-Todoey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Todoey/Pods-Todoey.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 		944C4F6A228732AE00B9FCD0 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				94E11A152284D1DF0032A94E /* Assets.xcassets */,
 				94E11A172284D1DF0032A94E /* LaunchScreen.storyboard */,
+				940F79A222A2FA8300ACABD1 /* Assets.xcassets */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -193,7 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94E11A192284D1DF0032A94E /* LaunchScreen.storyboard in Resources */,
-				94E11A162284D1DF0032A94E /* Assets.xcassets in Resources */,
+				940F79A322A2FA8300ACABD1 /* Assets.xcassets in Resources */,
 				94E11A142284D1DE0032A94E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

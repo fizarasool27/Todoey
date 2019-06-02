@@ -11,9 +11,9 @@ import RealmSwift
 import ChameleonFramework
 
 
-class CategoryViewController: SwipeTableViewController {
+class CategoryViewController: SwipeTableViewController{
     
-    
+    var textField = UITextField()
     let realm = try! Realm()
     
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -77,14 +77,14 @@ class CategoryViewController: SwipeTableViewController {
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
-        var textField = UITextField()
+        
         
         let alert = UIAlertController(title: "Add A New Category", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add category", style: .default) { (action) in
             
             let newCategory = Category()
-            newCategory.name = textField.text!
+            newCategory.name = self.textField.text!
             newCategory.catColor = UIColor.randomFlat.hexValue()
 //            self.categoryArray.append(newCategory)
             
@@ -94,15 +94,45 @@ class CategoryViewController: SwipeTableViewController {
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Add a new category"
-            textField = alertTextField
+            self.textField = alertTextField
+            
+//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tableViewTapped))
+//
+//            self.tableView.addGestureRecognizer(tapGesture)
+
+            
+        
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (cancelAction) in
+            print("This is cancel action")
         }
         
         alert.addAction(action)
+        alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
         
         
+        
     }
+    
+//    @objc func tableViewTapped() {
+//
+//        textField.endEditing(true)
+//
+//    }
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        print("Get rid of alert!")
+//        guard let window :UIWindow = UIApplication.shared.keyWindow , var topVC = window.rootViewController?.presentedViewController else {return}
+//        while topVC.presentedViewController != nil  {
+//            topVC = topVC.presentedViewController!
+//        }
+//        if topVC.isKind(of: UIAlertController.self) {
+//            topVC.dismiss(animated: false, completion: nil)
+//        }
+//    }
+
     
     //Data Manipulation methods
     
@@ -121,7 +151,7 @@ class CategoryViewController: SwipeTableViewController {
     }
     
     func loadCategory() {
-//
+
         categoryArray = realm.objects(Category.self)
         
 //        let request : NSFetchRequest<Category> = Category.fetchRequest()

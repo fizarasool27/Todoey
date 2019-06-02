@@ -55,7 +55,7 @@ class ToDoListViewController: SwipeTableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        guard let originalColor = UIColor(hexString: "ID9BF6") else {fatalError()}
+        guard let originalColor = UIColor(hexString: "000000") else {fatalError()}
         navigationController?.navigationBar.barTintColor = originalColor
         navigationController?.navigationBar.tintColor = FlatWhite()
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : FlatWhite()]
@@ -155,6 +155,7 @@ class ToDoListViewController: SwipeTableViewController {
             
 
             if let currentCategory = self.selectedCategory {
+                
                 do {
                     try self.realm.write {
                         let newItem = Item()
@@ -173,7 +174,12 @@ class ToDoListViewController: SwipeTableViewController {
                 textField = alertTextField
         }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (cancelAction) in
+            
+        }
+        
         alert.addAction(action)
+        alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
 
@@ -213,7 +219,6 @@ class ToDoListViewController: SwipeTableViewController {
 extension ToDoListViewController : UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         
         todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
         
